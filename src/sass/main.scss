@@ -1,0 +1,33 @@
+@import "common-components/normalize";
+@import "common-components/animations";
+
+body {
+	font-size: 18px;
+	font-family: "Roboto Slab", sans-serif;
+	line-height: 1.3;
+}
+
+strong {
+	font-weight: bold;
+}
+.container {
+	padding: 0 calc(50% - 500px);
+	display: flex;
+	flex-wrap: wrap;
+}
+.h1 {
+	font-size: 50px;
+	font-weight: 900;
+}
+.main {
+	&__container {
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__title {
+		width: 60%;
+	}
+	&__content {
+		width: 30%;
+	}
+}
