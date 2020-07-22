@@ -1,9 +1,26 @@
 $(document).ready(function () {
+    var slideIndexS = 0,
+        sliding = false;
     $('#fullpage').fullpage({
-        autoScrolling: true,
-        scrollHorizontally: true,
-        scrollHorizontallyKey: 'YWx2YXJvdHJpZ28uY29tX01mU2MyTnliMnhzU0c5eWFYcHZiblJoYkd4NVNRcg==',
+        anchors: ['main', 'steps', 'eating', 'training', 'smoking', 'inheritance', 'footer'],
+        css3: true,
         slidesNavigation: true,
-        slidesNavPosition: 'top'
+        slidesNavPosition: 'top',
+        afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
+            slideIndexS = slideIndex + 1;
+        },
+        onLeave: function (index, nextIndex, direction) {
+            if (index == 2 && !sliding) {
+                if (direction == 'down' && slideIndexS < 4) {
+                    $.fn.fullpage.moveSlideRight();
+                    return false;
+                } else if (direction == 'up' && slideIndexS > 1) {
+                    $.fn.fullpage.moveSlideLeft();
+                    return false;
+                }
+            } else if (sliding) {
+                return false;
+            }
+        }
     });
 });
