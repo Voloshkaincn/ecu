@@ -20,19 +20,28 @@
     transform: none;
   }
 }
-@keyframes slide{  
+@keyframes slide {
   0% {
     transform: translateY(-100%);
   }
   100% {
-   transform: translateY(0%);
+    transform: translateY(0%);
   }
 }
-@keyframes hidden{  
+@keyframes hidden {
   0% {
-   z-index: 2;
+    z-index: 2;
   }
-   100% {
-   z-index: 2;
+  100% {
+    z-index: 2;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
