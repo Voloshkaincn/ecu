@@ -267,12 +267,12 @@ strong {
     position: relative;
     padding: 0;
     list-style: none;
-    @media (min-width: $xxl) {
-      width: 115px;
-      height: 115px;
-      line-height: 110px;
-      font-size: 90px;
-    }
+    // @media (min-width: $xxl) {
+    //   width: 115px;
+    //   height: 115px;
+    //   line-height: 110px;
+    //   font-size: 90px;
+    // }
     &:after {
       content: "";
       border-radius: 50%;
@@ -474,6 +474,12 @@ strong {
   background: #002668;
   color: #fff;
   z-index: 100;
+
+  &-wrapper{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
 }
 
 @keyframes inheritance-anim{
@@ -502,6 +508,7 @@ strong {
   background: $main-light;
   color: $text-color2;
   overflow: hidden;
+
   &__bottom {
     overflow: hidden;
   }

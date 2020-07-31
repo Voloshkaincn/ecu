@@ -4,10 +4,11 @@ $(document).ready(function () {
         sliding = false,
         isInheritanceSectionDisplayed = true;
     $('#fullpage').fullpage({
-        anchors: ['main', 'steps', 'eating', 'inheritance', 'footer'],
+        anchors: ['main', 'steps', 'eating', 'inheritance'],
         css3: true,
         slidesNavigation: true,
         slidesNavPosition: 'top',
+        scrollOverflow: true,
         afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
             if (index == 2) {
                 slideIndex2 = slideIndex + 1;
@@ -43,19 +44,21 @@ $(document).ready(function () {
 
             //Inheritance animation
             if (index == 3 && direction == 'down' && !isInheritanceSectionDisplayed) {
+                $.fn.fullpage.setAllowScrolling(false);
                 $('.inheritance').addClass('inheritance_transition')
                     .one('animationend', () => {
                         $('.inheritance').removeClass('inheritance_transition');
                         isInheritanceSectionDisplayed = true;
                         $.fn.fullpage.silentMoveTo('inheritance');
+                        $.fn.fullpage.setAllowScrolling(true);
                     });
                 return false;
             } else if (index == 4 && direction == 'up' && isInheritanceSectionDisplayed) {
-                $.fn.fullpage.setAllowScrolling(false, 'up');
+                $.fn.fullpage.setAllowScrolling(false);
                 $('.inheritance').addClass('inheritance_transition-reverse')
                     .one('animationend', () => {
                         $('.inheritance').removeClass('inheritance_transition-reverse');
-                        $.fn.fullpage.setAllowScrolling(true, 'up');
+                        $.fn.fullpage.setAllowScrolling(true);
                     });
                 isInheritanceSectionDisplayed = false;
                 $.fn.fullpage.silentMoveTo('eating',2);
