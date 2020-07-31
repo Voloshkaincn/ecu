@@ -1,7 +1,8 @@
 $(document).ready(function () {
     var slideIndex2 = 0,
         slideIndex3 = 0,
-        sliding = false;
+        sliding = false,
+        isInheritanceSectionDisplayed = true;
     $('#fullpage').fullpage({
         anchors: ['main', 'steps', 'eating', 'inheritance', 'footer'],
         css3: true,
@@ -12,12 +13,11 @@ $(document).ready(function () {
                 slideIndex2 = slideIndex + 1;
             } else if (index == 3) {
                 slideIndex3 = slideIndex + 1;
+                isInheritanceSectionDisplayed = false;
             }
         },
         onLeave: function (index, nextIndex, direction) {
-            console.log("index " + index)
-            console.log("slideIndex2 " + slideIndex2)
-            console.log("slideIndex3 " + slideIndex3)
+            // Slides
             if (index == 2) {
                 if (direction == 'down' && slideIndex2 < 4) {
                     $.fn.fullpage.moveSlideRight();
@@ -29,6 +29,7 @@ $(document).ready(function () {
                     $('.fp-slidesNav').removeClass('fp-slidesNav_active');
                 }
             } else if (index == 3) {
+                
                 if (direction == 'down' && slideIndex3 < 3) {
                     $.fn.fullpage.moveSlideRight();
                     return false;
@@ -39,27 +40,28 @@ $(document).ready(function () {
             } else if (index == 1) {
                 $('.fp-slidesNav').addClass('fp-slidesNav_active')
             }
+
+            //Inheritance animation
+            if (index == 3 && direction == 'down' && !isInheritanceSectionDisplayed) {
+                $('.inheritance').addClass('inheritance_transition')
+                    .one('animationend', () => {
+                        $('.inheritance').removeClass('inheritance_transition');
+                        isInheritanceSectionDisplayed = true;
+                        $.fn.fullpage.silentMoveTo('inheritance');
+                    });
+                return false;
+            } else if (index == 4 && direction == 'up' && isInheritanceSectionDisplayed) {
+                $.fn.fullpage.setAllowScrolling(false, 'up');
+                $('.inheritance').addClass('inheritance_transition-reverse')
+                    .one('animationend', () => {
+                        $('.inheritance').removeClass('inheritance_transition-reverse');
+                        $.fn.fullpage.setAllowScrolling(true, 'up');
+                    });
+                isInheritanceSectionDisplayed = false;
+                $.fn.fullpage.silentMoveTo('eating',2);
+                return false;
+            }
         }
     });
-
-    
-
-    // $(window).resize(function() { 
-    //     $('.circle__white-fill').height($('.halfimage__clip').height());
-    //     $('.circle__white-fill').width($('.halfimage__clip').width());
-    //     $('.circle__white-fill').css({
-    //     'left': $('.halfimage').width()/100*25+"px",
-    //     'right': 'auto'
-    //    });
-
-    //    $('.circle__white-fill--second').height($('.halfimage__clip--second').height());
-    //    $('.circle__white-fill--second').width($('.halfimage__clip--second').width());
-    //    $('.circle__white-fill--second').css({
-    //     'left': $('.halfimage--second').width()/100*25+"px",
-    //     'right': 'auto'
-    //    });
-    // }); 
-
-    // $(window).resize();
-
 });
+

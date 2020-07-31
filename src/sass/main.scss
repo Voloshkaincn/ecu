@@ -399,7 +399,7 @@ strong {
   .white-circle {
     position: absolute;
     top: calc(10% + 51px);
-    left: -33%;
+    left: -30%;
     //bottom: 0;
     border-radius: 50%;
     background-color: white;
@@ -424,7 +424,7 @@ strong {
     height: 500px;
     // background-color: yellow;
     position: absolute;
-    left: -8%;
+    left: -5%;
     overflow: hidden;
     margin-top: 48px;
     // margin-left: -10px;
@@ -473,7 +473,31 @@ strong {
 .inheritance {
   background: #002668;
   color: #fff;
+  z-index: 100;
 }
+
+@keyframes inheritance-anim{
+    0% {
+        clip-path: circle(0 at 62.5% 275px);
+    }
+    // 50% {
+    //     clip-path: circle(21vmax at 62% 300px);
+    // }
+    100% {
+        clip-path: circle(100vmax at 50% 50%);
+    }
+}
+
+.inheritance_transition {
+    top: -100%;
+    animation: inheritance-anim 1s ease-in;
+}
+
+.inheritance_transition-reverse {
+    top: -100%;
+    animation: inheritance-anim 1s ease-in reverse;
+}
+
 .footer {
   background: $main-light;
   color: $text-color2;
@@ -560,3 +584,5 @@ strong {
     }
   }
 }
+
+
