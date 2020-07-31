@@ -512,6 +512,10 @@ strong {
       padding-bottom: 60px;
       min-height: 100vh;
 
+      @media screen and (max-height:780px){
+        padding-top: 60px;
+      }
+
       .color{
         position: relative;
 
