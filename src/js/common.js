@@ -99,6 +99,32 @@ $(document).ready(function () {
                     window.requestAnimationFrame(step);
                 }
             }
+
+            //SECOND SOLUTION
+
+
+            // let scroll = 0;
+            // let angle = 0;
+    
+            // $(".inheritance").bind("mousewheel", function (e) {
+            // if (e.originalEvent.wheelDelta / 120 > 0) {
+            //   scroll -= 120;
+            //   angle = 360 / 100*scroll/$(".footer").height() * 100;
+            //   console.log(angle);
+            //   if(angle <= 0){
+            //       angle = 0;
+            //   }
+            //   $(".inheritance__circle").css({'transform' : 'rotate('+ angle +'deg)'});
+          
+            // } else {
+            //   scroll += 120;
+            //   angle = 360 / 100*scroll / $(".footer").height() * 100;
+            //   if(angle >= 360){
+            //       angle = 360;
+            //   }
+            //   $(".inheritance__circle").css({'transform' : 'rotate('+ angle +'deg)'});
+            // }
+            // });
         },
     });
 });
