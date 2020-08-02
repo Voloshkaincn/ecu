@@ -586,19 +586,19 @@ strong {
 
 @keyframes inheritance-anim {
   0% {
-    clip-path: circle(0 at 62.5% 275px);
+     clip-path: circle(0 at calc( 47.5% + 250px) 298px);
   }
   // 50% {
   //     clip-path: circle(21vmax at 62% 300px);
   // }
   100% {
-    clip-path: circle(100vmax at 50% 50%);
+    clip-path: circle(100vmax at calc( 47.5% + 250px) 298px);
   }
 }
 
 .inheritance_transition {
   top: -100%;
-  animation: inheritance-anim 1s ease-in;
+  animation: inheritance-anim 30s ease-in;
 }
 
 .inheritance_transition-reverse {

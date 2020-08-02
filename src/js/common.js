@@ -90,7 +90,7 @@ $(document).ready(function () {
                 let { top: sectionTop } = $(".inheritance-wrapper").get(0).getBoundingClientRect();
                 let scrollHeight = $(".footer").innerHeight();
                 let angle = -(sectionTop / scrollHeight * 360);
-                console.log(sectionTop);
+                //console.log(sectionTop);
                 if(angle < -360){
                     angle = -360;
                 }
@@ -127,4 +127,22 @@ $(document).ready(function () {
             // });
         },
     });
+
+    //console.log( "offset",$('#smoking-circle').offset().top);
+
+    
+    
+
+    // let y = document.getElementsByClassName("inheritance_transition")[0].animate([
+    //     // keyframes
+    //     { 'transform': 'translateY(0px)' }, 
+    //     { 'transform': 'translateY(-300px)' }
+    //   ], { 
+    //     // timing options
+    //     duration: 1000,
+    //     iterations: Infinity
+    //   });
+
+    // console.log(y);
+    //console.log( "position",$('#smoking-circle').position().left);
 });
