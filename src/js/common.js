@@ -3,12 +3,16 @@ $(document).ready(function () {
         slideIndex3 = 0,
         sliding = false,
         isInheritanceSectionDisplayed = true;
+
     $('#fullpage').fullpage({
         anchors: ['main', 'steps', 'eating', 'inheritance'],
         css3: true,
         slidesNavigation: true,
         slidesNavPosition: 'top',
         scrollOverflow: true,
+        scrollOverflowOptions: {
+
+        },
         afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
             if (index == 2) {
                 slideIndex2 = slideIndex + 1;
@@ -30,7 +34,7 @@ $(document).ready(function () {
                     $('.fp-slidesNav').removeClass('fp-slidesNav_active');
                 }
             } else if (index == 3) {
-                
+
                 if (direction == 'down' && slideIndex3 < 3) {
                     $.fn.fullpage.moveSlideRight();
                     return false;
@@ -61,10 +65,40 @@ $(document).ready(function () {
                         $.fn.fullpage.setAllowScrolling(true);
                     });
                 isInheritanceSectionDisplayed = false;
-                $.fn.fullpage.silentMoveTo('eating',2);
+                $.fn.fullpage.silentMoveTo('eating', 2);
                 return false;
             }
-        }
+        },
+        afterRender: function () {
+            let iScroll = $('section.section.inheritance').find('.fp-scrollable').data('iscrollInstance');
+
+            iScroll.prevScrollFunc = iScroll.scrollTo;
+            iScroll.scrollTo = function (x, y, time, easing) {
+                iScroll.prevScrollFunc(x, y, 500, IScroll.utils.ease.circular);
+            };
+
+            let isScrolling = false;
+            iScroll.on("scrollStart", () => {
+                isScrolling = true;
+                window.requestAnimationFrame(step);
+            });
+            iScroll.on("scrollEnd", () => {
+                isScrolling = false;
+            });
+
+            function step() {
+                let { top: sectionTop } = $(".inheritance-wrapper").get(0).getBoundingClientRect();
+                let scrollHeight = $(".footer").innerHeight();
+                let angle = -(sectionTop / scrollHeight * 360);
+                console.log(sectionTop);
+                if(angle < -360){
+                    angle = -360;
+                }
+                $(".inheritance__circle").css({ 'transform': `rotate(${angle}deg)` });
+                if (isScrolling) {
+                    window.requestAnimationFrame(step);
+                }
+            }
+        },
     });
 });
-
