@@ -33,7 +33,7 @@ strong {
   color: $main-color;
 }
 
-.bg-blue{
+.bg-blue {
   background-color: $main-color;
   color: #fff;
 }
@@ -65,7 +65,7 @@ strong {
   background: $text-color;
   margin: 1em 0;
 
-  &--white{
+  &--white {
     background: #fff;
   }
 }
@@ -106,51 +106,47 @@ strong {
   right: 0;
   bottom: 0;
   width: 100% !important;
-
-  
-  
 }
-.eating-wrapper{
-  .sep{
+.eating-wrapper {
+  .sep {
     margin: 60px 0;
   }
 
-  .col-6{
+  .col-6 {
     max-width: 630px;
   }
 }
 
-.training{
-
-  .h2{
+.training {
+  .h2 {
     max-width: 350px;
     font-size: 80px;
     margin: 50px 0;
     line-height: 1.2em;
   }
-  .col-6{
+  .col-6 {
     max-width: 540px;
   }
-  .sep{
+  .sep {
     margin: 60px 0;
   }
 }
 
-.smoking{
-  .h2{
+.smoking {
+  .h2 {
     max-width: 613px;
     margin: 50px 0;
     line-height: 1.16em;
   }
-  .sep{
+  .sep {
     margin: 60px 0;
   }
-  .col-6{
+  .col-6 {
     max-width: 750px;
   }
 
-  p:last-child{
-     max-width: 420px;
+  p:last-child {
+    max-width: 420px;
   }
 }
 
@@ -401,8 +397,6 @@ strong {
   }
 }
 
-
-
 .steps {
   position: relative;
 
@@ -531,31 +525,29 @@ strong {
   }
 }
 
-.article{
-  &__text{
+.article {
+  &__text {
     font-size: 19px;
     //margin: 0;
 
-    &--big{
+    &--big {
       font-size: 39px;
 
-      @media screen and (max-width:$xxl) {
+      @media screen and (max-width: $xxl) {
         font-size: 28px;
       }
     }
   }
 }
 
-
 .inheritance {
   background: #002668;
   color: #fff;
   z-index: 100;
 
-  &__h2{
+  &__h2 {
     max-width: 500px;
   }
-  
 
   &-wrapper {
     min-height: 100vh;
@@ -563,19 +555,19 @@ strong {
     align-items: center;
     position: relative;
 
-    .container{
+    .container {
       padding-top: 120px;
       padding-bottom: 60px;
       min-height: 100vh;
 
-      @media screen and (max-height:780px){
+      @media screen and (max-height: 780px) {
         padding-top: 60px;
       }
 
-      .color{
+      .color {
         position: relative;
 
-        .star{
+        .star {
           color: $main-color;
           position: absolute;
           top: 0;
@@ -584,24 +576,24 @@ strong {
       }
     }
 
-    .sep{
+    .sep {
       margin-top: 15vh;
     }
-    .article__text:last-child{
+    .article__text:last-child {
       margin: 38px 0 0 0;
     }
   }
 
-  .circle{
+  .circle {
     border-radius: 50%;
     display: flex;
     justify-content: center;
     transition: 0.1s all;
 
-    &__text{
-      max-width: 369px;;
+    &__text {
+      max-width: 369px;
       font-size: 48px;
-      color: #FFFFFF;
+      color: #ffffff;
       margin-left: 70px;
       line-height: 1.2;
       // max-width: 420px;
@@ -610,12 +602,12 @@ strong {
       // margin-left: 70px;
       // line-height: 1;
 
-      &--big{
+      &--big {
         font-weight: 600;
         font-size: 170px;
         line-height: 1.3em;
 
-        sub{
+        sub {
           font-size: 50%;
           bottom: 0;
         }
@@ -626,7 +618,7 @@ strong {
   &__circle {
     width: 600px;
     height: 600px;
-    background: linear-gradient(45deg, #002E8F 14.64%, #007DE0 85.36%);
+    background: linear-gradient(45deg, #002e8f 14.64%, #007de0 85.36%);
     position: absolute;
     bottom: -400px;
     left: 3%;
@@ -635,13 +627,13 @@ strong {
 
 @keyframes inheritance-anim {
   0% {
-     clip-path: circle(0 at calc( 47.5% + 250px) 298px);
+    clip-path: circle(0 at calc(47.5% + 250px) 298px);
   }
   // 50% {
   //     clip-path: circle(21vmax at 62% 300px);
   // }
   100% {
-    clip-path: circle(100vmax at calc( 47.5% + 250px) 298px);
+    clip-path: circle(100vmax at calc(47.5% + 250px) 298px);
   }
 }
 
@@ -671,6 +663,23 @@ strong {
   }
 }
 
+.social__path:hover {
+  fill: #3397e6;
+}
+
+.royal {
+  cursor: pointer;
+  &:hover {
+    path {
+      fill: #337db5;
+    }
+  }
+}
+
+.author__link:hover{
+  text-decoration: underline;
+}
+
 .footer {
   background: $main-light;
   color: $text-color2;
@@ -679,8 +688,7 @@ strong {
   display: flex;
   align-items: center;
 
-
-  .container{
+  .container {
     width: 100%;
   }
 
@@ -758,16 +766,41 @@ strong {
   }
 }
 
-.main__svg path:nth-child(5), .main__svg path:nth-child(7), .main__svg path:nth-child(9), .main__svg path:nth-child(17), .main__svg path:nth-child(19), .main__svg path:nth-child(21), .main__svg path:nth-child(23), .main__svg path:nth-child(1) {
+.main__svg path:nth-child(5),
+.main__svg path:nth-child(7),
+.main__svg path:nth-child(9),
+.main__svg path:nth-child(17),
+.main__svg path:nth-child(19),
+.main__svg path:nth-child(21),
+.main__svg path:nth-child(23),
+.main__svg path:nth-child(1) {
   animation: 1.5s linear 1s infinite alternate translateLeft;
 }
-.main__svg path:nth-child(4), .main__svg path:nth-child(6), .main__svg path:nth-child(8), .main__svg path:nth-child(18), .main__svg path:nth-child(20), .main__svg path:nth-child(22), .main__svg path:nth-child(3), .main__svg path:nth-child(2) {
+.main__svg path:nth-child(4),
+.main__svg path:nth-child(6),
+.main__svg path:nth-child(8),
+.main__svg path:nth-child(18),
+.main__svg path:nth-child(20),
+.main__svg path:nth-child(22),
+.main__svg path:nth-child(3),
+.main__svg path:nth-child(2) {
   animation: 1.5s linear 1s infinite alternate translateRight;
 }
-.main__svg path:nth-child(10), .main__svg path:nth-child(12), .main__svg path:nth-child(14), .main__svg path:nth-child(16), .main__svg path:nth-child(24), .main__svg path:nth-child(26), .main__svg path:nth-child(28) {
+.main__svg path:nth-child(10),
+.main__svg path:nth-child(12),
+.main__svg path:nth-child(14),
+.main__svg path:nth-child(16),
+.main__svg path:nth-child(24),
+.main__svg path:nth-child(26),
+.main__svg path:nth-child(28) {
   animation: 1.5s linear 1s infinite alternate translateTop;
 }
-.main__svg path:nth-child(11), .main__svg path:nth-child(13), .main__svg path:nth-child(15), .main__svg path:nth-child(8), .main__svg path:nth-child(25), .main__svg path:nth-child(27) {
+.main__svg path:nth-child(11),
+.main__svg path:nth-child(13),
+.main__svg path:nth-child(15),
+.main__svg path:nth-child(8),
+.main__svg path:nth-child(25),
+.main__svg path:nth-child(27) {
   animation: 1.5s linear 1s infinite alternate translateBottom;
 }
 .main__title:hover path {
