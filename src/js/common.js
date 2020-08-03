@@ -74,6 +74,8 @@ $(document).ready(function () {
 
             iScroll.prevScrollFunc = iScroll.scrollTo;
             iScroll.scrollTo = function (x, y, time, easing) {
+                isScrolling = true;
+                window.requestAnimationFrame(step);
                 iScroll.prevScrollFunc(x, y, 500, IScroll.utils.ease.circular);
             };
 
