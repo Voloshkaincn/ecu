@@ -676,7 +676,7 @@ strong {
   }
 }
 
-.author__link:hover{
+.author__link:hover {
   text-decoration: underline;
 }
 
@@ -766,76 +766,41 @@ strong {
   }
 }
 
-.main__svg path:nth-child(5),
-.main__svg path:nth-child(7),
-.main__svg path:nth-child(9),
-.main__svg path:nth-child(17),
-.main__svg path:nth-child(19),
-.main__svg path:nth-child(21),
-.main__svg path:nth-child(23),
-.main__svg path:nth-child(1) {
-  animation: 1.5s linear 1s infinite alternate translateLeft;
-}
-.main__svg path:nth-child(4),
-.main__svg path:nth-child(6),
-.main__svg path:nth-child(8),
-.main__svg path:nth-child(18),
-.main__svg path:nth-child(20),
-.main__svg path:nth-child(22),
-.main__svg path:nth-child(3),
-.main__svg path:nth-child(2) {
-  animation: 1.5s linear 1s infinite alternate translateRight;
-}
-.main__svg path:nth-child(10),
-.main__svg path:nth-child(12),
-.main__svg path:nth-child(14),
-.main__svg path:nth-child(16),
-.main__svg path:nth-child(24),
-.main__svg path:nth-child(26),
-.main__svg path:nth-child(28) {
-  animation: 1.5s linear 1s infinite alternate translateTop;
-}
-.main__svg path:nth-child(11),
-.main__svg path:nth-child(13),
-.main__svg path:nth-child(15),
-.main__svg path:nth-child(8),
-.main__svg path:nth-child(25),
-.main__svg path:nth-child(27) {
-  animation: 1.5s linear 1s infinite alternate translateBottom;
-}
-.main__title:hover path {
-  animation-duration: 0.5s;
+.main__bg {
+  animation: intestines 5s infinite;
 }
 
-@keyframes translateLeft {
-  0% {
-    transform: translateX(-8px);
-  }
-  100% {
-    transform: translateX(8px);
-  }
+.main__title:hover .main__bg {
+  animation-duration: 2.5s;
 }
-@keyframes translateRight {
+
+@keyframes intestines {
   0% {
-    transform: translateX(8px);
+    top: 0;
+  }
+  13%{
+    top: 10px;
+  }
+  25%{
+    top: -10px;
+  }
+  33%{
+    left: -10px;
+  }
+  50%{
+    left: 10px;
+    top: 10px;
+  }
+  63%{
+    left: -10px;
+    top: 10px;
+  }
+  75%{
+    left: 10px;
+    top: -10px;
   }
   100% {
-    transform: translateX(-8px);
-  }
-}
-@keyframes translateTop {
-  0% {
-    transform: translateY(-8px);
-  }
-  100% {
-    transform: translateY(8px);
-  }
-}
-@keyframes translateBottom {
-  0% {
-    transform: translateY(8px);
-  }
-  100% {
-    transform: translateY(-8px);
+    left: 0px;
+    top: 0px;
   }
 }

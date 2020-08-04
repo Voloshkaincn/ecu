@@ -10,8 +10,9 @@ $(document).ready(function () {
         slidesNavigation: true,
         slidesNavPosition: 'top',
         scrollOverflow: true,
+        
         scrollOverflowOptions: {
-
+            bounce:false,
         },
         afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
             if (index == 2) {
