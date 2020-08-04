@@ -94,7 +94,7 @@ $(document).ready(function () {
                 let scrollHeight = $(".footer").innerHeight();
                 let angle = -(sectionTop / scrollHeight * 360);
                 //console.log(sectionTop);
-                if(angle < -360){
+                if (angle < -360) {
                     angle = -360;
                 }
                 $(".inheritance__circle").css({ 'transform': `rotate(${angle}deg)` });
@@ -108,7 +108,7 @@ $(document).ready(function () {
 
             // let scroll = 0;
             // let angle = 0;
-    
+
             // $(".inheritance").bind("mousewheel", function (e) {
             // if (e.originalEvent.wheelDelta / 120 > 0) {
             //   scroll -= 120;
@@ -118,7 +118,7 @@ $(document).ready(function () {
             //       angle = 0;
             //   }
             //   $(".inheritance__circle").css({'transform' : 'rotate('+ angle +'deg)'});
-          
+
             // } else {
             //   scroll += 120;
             //   angle = 360 / 100*scroll / $(".footer").height() * 100;
@@ -133,8 +133,8 @@ $(document).ready(function () {
 
     //console.log( "offset",$('#smoking-circle').offset().top);
 
-    
-    
+
+
 
     // let y = document.getElementsByClassName("inheritance_transition")[0].animate([
     //     // keyframes

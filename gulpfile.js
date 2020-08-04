@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
 	sassToCss = require('gulp-sass'),
 	concat = require("gulp-concat"),
+	babel = require('gulp-babel'),
 	uglifyjs = require("gulp-uglify"),
 	cleanCSS = require('gulp-clean-css'),
 	autoprefixer = require("gulp-autoprefixer"),
@@ -28,21 +29,24 @@ gulp.task('compileSass', function () {
 });
 
 //Concat all library js files into libs.min.js
-gulp.task('createJsLibs', function () {
-	return gulp.src([
-		'src/libs/jquery/dist/jquery.min.js',
-	])
-		.pipe(concat('libs.min.js'))
-		.pipe(uglifyjs())
-		.pipe(gulp.dest('src/js'))
-		.pipe(browserSync.stream({ match: '**/*.css' }));
-});
+// gulp.task('createJsLibs', function () {
+// 	return gulp.src([
+// 		'src/libs/jquery/dist/jquery.min.js',
+// 	])
+// 		.pipe(concat('libs.min.js'))
+// 		.pipe(uglifyjs())
+// 		.pipe(gulp.dest('src/js'))
+// 		.pipe(browserSync.stream({ match: '**/*.css' }));
+// });
 
 //Compress JSFiles
 gulp.task('compressJs', function () {
 	return gulp.src([
 		'src/js/common.js'
 	])
+		.pipe(babel({
+			presets: ['@babel/env']
+		}))
 		.pipe(uglifyjs())
 		.pipe(rename({
 			suffix: ".min"
@@ -67,7 +71,7 @@ gulp.task('browserSync', function () {
 
 
 // Watch
-gulp.task('watch', gulp.parallel('code', 'compileSass', 'createJsLibs', 'compressJs', 'browserSync', function startWatching() {
+gulp.task('watch', gulp.parallel('code', 'compileSass', 'compressJs', 'browserSync', function startWatching() {
 	gulp.watch('src/sass/**/*.{css,sass,scss}', gulp.parallel('compileSass'));
 	gulp.watch('src/js/common.js', gulp.parallel('compressJs'));
 	gulp.watch('src/**/*.{php,html}', gulp.parallel('code')).on('change', browserSync.reload);
