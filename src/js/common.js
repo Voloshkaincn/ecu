@@ -97,6 +97,9 @@ $(document).ready(function () {
                 if (angle < -360) {
                     angle = -360;
                 }
+                if (angle > 360) {
+                    angle = 360;
+                }
                 $(".inheritance__circle").css({ 'transform': `rotate(${angle}deg)` });
                 if (isScrolling) {
                     window.requestAnimationFrame(step);
