@@ -14,7 +14,7 @@ var gulp = require('gulp'),
 gulp.task('compileSass', function () {
 	return gulp.src(['src/sass/**/*.{sass,scss}'])
 		.pipe(sourcemaps.init())
-		.pipe(sassToCss({ outputStyle: 'expanded' }).on('error', sassToCss.logError))
+		.pipe(sassToCss({ outputStyle: 'expanded', sourcemap: true }).on('error', sassToCss.logError))
 		.pipe(autoprefixer({ cascade: false }))
 		.pipe(gulp.dest('src/css'))
 		.pipe(cleanCSS())
