@@ -87,7 +87,7 @@ body {
 }
 .active .slide.active .sep,
 .inheritance.active .sep {
-  transition: all 1s ease-in-out 2s;
+  transition: all 1s ease-in-out 1s;
   transform: scaleX(1);
   width: 118px;
 }
@@ -218,13 +218,13 @@ p {
 .section.active .slide.active .anim_translate {
   transform: translateX(0);
   opacity: 1;
-  transition: all 1.5s;
+  transition: all 1s;
 }
 .section.active .slide.active .anim_translate_2 {
-  transition: all 1.5s 0.5s;
+  transition: all 1s 0.5s;
 }
 .section.active .slide.active .anim_translate_3 {
-  transition: all 1.5s 1s;
+  transition: all 1s 1s;
 }
 
 .anim_translate_left {
@@ -235,7 +235,7 @@ p {
 .section.active .anim_translate_left {
   transform: translateX(0);
   opacity: 1;
-  transition: all 1.5s;
+  transition: all 1s;
 }
 
 .anim_fadein {
@@ -244,13 +244,13 @@ p {
 }
 .section.active .anim_fadein {
   opacity: 1;
-  transition: all 1.5s 0.5s;
+  transition: all 1s 0.5s;
 }
 .section.active .anim_fadein2 {
-  transition: all 1.5s 0.8s;
+  transition: all 1s 0.8s;
 }
 .section.active .anim_fadein3 {
-  transition: all 1.5s 1.1s;
+  transition: all 1s 1.1s;
 }
 .anim_translate_top {
   transform: translateY(100%);
@@ -265,7 +265,7 @@ p {
 .section.active .anim_translate_top {
   transform: translateY(0);
   opacity: 1;
-  transition: all 1.7s cubic-bezier(0.16, 0.21, 0.72, 1.49) 1s;
+  transition: all 1.5s cubic-bezier(0.16, 0.21, 0.72, 1.49) 1s;
 }
 
 .halfimage {
@@ -403,7 +403,7 @@ p {
   left: 0 !important;
   right: 0;
   margin: 0 auto !important;
-  transition: all 1s;
+  transition: all 0.5s;
   &_active {
     top: 25px;
     &:before {
@@ -429,13 +429,13 @@ p {
       right: 0;
       left: 0;
       width: 100%;
-      animation: arc 1s linear 1s;
+      animation: arc 0.7s linear 0.5s;
       z-index: -1;
       background-color: #fff;
       animation-fill-mode: forwards;
     }
     &_reverse:after {
-      animation: arcReverce 1s linear 1s;
+      animation: arcReverce 0.7s linear 0.5s;
       animation-fill-mode: forwards;
     }
     @keyframes arc {
@@ -621,19 +621,6 @@ p {
   height: 100%;
   right: 0;
   bottom: 0;
-
-  // &_composition {
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 100%;
-  //   left: -60%;
-  //   display: block;
-  //   height: 500%;
-  //   margin-top: -180%;
-  //   width: 180%;
-  // }
 
   &__clip {
     clip-path: ellipse(100% 115% at 100% 50%);
