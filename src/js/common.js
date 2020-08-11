@@ -2,7 +2,8 @@ $(document).ready(function () {
     var slideIndex2 = 0,
         slideIndex3 = 0,
         sliding = false,
-        isInheritanceSectionDisplayed = true;
+        isInheritanceSectionDisplayed = true,
+        stepsActiveSlide = false;
 
     $('#fullpage').fullpage({
         anchors: ['main', 'steps', 'eating', 'inheritance'],
@@ -10,42 +11,55 @@ $(document).ready(function () {
         slidesNavigation: true,
         slidesNavPosition: 'top',
         scrollOverflow: true,
-        
+        scrollingSpeed: 500,
         scrollOverflowOptions: {
-            bounce:false,
+            bounce: false,
+        },
+        afterLoad: function (origin, index) {
+            stepsActiveSlide = $('.steps__slide.active').data('anchor');
         },
         afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
             if (index == 2) {
-                slideIndex2 = slideIndex + 1;
+                slideIndex2 = slideIndex;
             } else if (index == 3) {
-                slideIndex3 = slideIndex + 1;
+                slideIndex3 = slideIndex;
                 isInheritanceSectionDisplayed = false;
             }
         },
         onLeave: function (index, nextIndex, direction) {
             // Slides
-            if (index == 2) {
-                if (direction == 'down' && slideIndex2 < 4) {
+            // console.log(index, slideIndex2, slideIndex3);
+            if ((index == 1)) {
+                $('.fp-slidesNav').addClass('fp-slidesNav_active')
+            } else if (index == 2) {
+                if (direction == 'down' && slideIndex2 < 5) {
                     $.fn.fullpage.moveSlideRight();
                     return false;
-                } else if (direction == 'up' && slideIndex2 > 1) {
+                } else if (direction == 'up' && slideIndex2 > 0) {
                     $.fn.fullpage.moveSlideLeft();
                     return false;
-                } else if (direction == 'up' && slideIndex2 < 4) {
-                    $('.fp-slidesNav').removeClass('fp-slidesNav_active');
+                } else if ((direction == 'up' && slideIndex2 == 0) || (direction == 'down' && slideIndex2 == 5)) {
+                    $('.fp-slidesNav').removeClass('fp-slidesNav_active fp-slidesNav_active_reverse');
+
                 }
             } else if (index == 3) {
-
-                if (direction == 'down' && slideIndex3 < 3) {
+                if (direction == 'up' && slideIndex3 == 0) {
+                    $('.fp-slidesNav').addClass('fp-slidesNav_active fp-slidesNav_active_reverse')
+                    if (stepsActiveSlide == 'steps__slide1') {
+                        stepsActiveSlide = false
+                        $.fn.fullpage.moveTo(2, 5);
+                        return false;
+                    }
+                    // $.fn.fullpage.moveSlideRight();
+                } else if (direction == 'down' && slideIndex3 < 2) {
                     $.fn.fullpage.moveSlideRight();
                     return false;
-                } else if (direction == 'up' && slideIndex3 > 1) {
+                } else if (direction == 'up' && slideIndex3 > 0) {
                     $.fn.fullpage.moveSlideLeft();
                     return false;
                 }
-            } else if (index == 1) {
-                $('.fp-slidesNav').addClass('fp-slidesNav_active')
             }
+
 
             //Inheritance animation
             if (index == 3 && direction == 'down' && !isInheritanceSectionDisplayed) {
@@ -92,7 +106,7 @@ $(document).ready(function () {
             function step() {
                 let { top: sectionTop } = $(".inheritance-wrapper").get(0).getBoundingClientRect();
                 let scrollHeight = $(".footer").innerHeight();
-                let angle = -(sectionTop / scrollHeight * 360);
+                let angle = -(sectionTop / scrollHeight * 460);
                 //console.log(sectionTop);
                 if (angle < -360) {
                     angle = -360;
@@ -151,4 +165,45 @@ $(document).ready(function () {
 
     // console.log(y);
     //console.log( "position",$('#smoking-circle').position().left);
+
+
+
+
+    /* Circule move by mouse moving*/
+
+    var banner = $(".eating .slide");
+    var imgs = $(".halfimage .white-circle, .halfimage__circle");
+    console.log($(".halfimage .white-circle, .halfimage__circle"))
+    function moving(object) {
+        banner.on('mousemove', function (event) {
+            let screenWidth = $(document).width();
+            let screenHeight = $(document).height();
+            let Y = Math.floor((event.pageY - screenWidth * 0.08 + screenHeight / 6) / 3) + "px";
+            let X = Math.floor((event.pageX - 300) / 35) + "deg";
+            object.css({ 'top': Y, 'transform': 'rotate(' + X + ')' });
+        });
+    }
+    moving(imgs);
 });
+
+/* **** paralax effect on top bg **** */
+var parallaxIt = function (e, target, parent, movement) {
+    var relX = e.pageX - offset(parent).left
+    var relY = e.pageY - offset(parent).top
+    var x = (relX - parent.offsetWidth / 2) / parent.offsetWidth * movement
+    var y = (relY - parent.offsetHeight / 2) / parent.offsetHeight * movement / 2
+
+    target.style.setProperty('--parallax-x', x + "px");
+    target.style.setProperty('--parallax-y', y + "px");
+}
+
+function offset(el) {
+    var rect = el.getBoundingClientRect(),
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop
+    return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+}
+
+document.querySelector(".main").addEventListener("mousemove", function (e) {
+    parallaxIt(e, document.querySelector("#svgAnimJs"), this, 150)
+})
