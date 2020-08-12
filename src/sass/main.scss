@@ -591,6 +591,14 @@ p {
   }
   &__slide {
     text-align: center;
+    // .h3 {
+    //   opacity: 0;
+    //   transition: all 0.3s;
+    //   .active & {
+    //     opacity: 1;
+    //     transition: all 0.5s;
+    //   }
+    // }
   }
   &__text {
     font-family: Merriweather;
@@ -642,7 +650,7 @@ p {
     background-color: white;
     width: 26vw;
     padding-top: 26vw;
-    transition: transform 0.5s ease-in-out;
+    // transition: transform 0.5s ease-in-out;
   }
 
   &__circle {
@@ -654,13 +662,13 @@ p {
     margin-top: 48px;
     overflow: hidden;
     z-index: -5;
-    transition: transform 0.5s ease-in-out;
+    // transition: transform 0.5s ease-in-out;
 
     img {
       height: 100%;
       width: 100%;
       object-fit: cover;
-      object-position: right;
+      object-position: center;
       position: absolute;
       top: 0;
       left: 0;

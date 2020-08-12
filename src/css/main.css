@@ -523,6 +523,10 @@ p {
 }
 
 .slide {
+  position: relative;
+}
+
+.eating .slide {
   position: absolute;
   top: 0;
   left: 0;
@@ -531,11 +535,11 @@ p {
   width: 100% !important;
 }
 
-.slide.active {
+.eating .slide.active {
   z-index: 2;
 }
 
-.fp-slidesContainer {
+.eating .fp-slidesContainer {
   max-width: 100%;
   -webkit-transform: translate3d(0px, 0px, 0px);
   transform: translate3d(0px, 0px, 0px);
@@ -1054,28 +1058,6 @@ p {
   text-align: center;
 }
 
-.steps__slide .h3 {
-  opacity: 0;
-  transition: all 0.1s ease-in-out;
-}
-
-.steps__slide .steps__image {
-  -webkit-transform: translateX(100%);
-  transform: translateX(100%);
-  transition: all 0s ease-in-out 1s;
-}
-
-.steps__slide.active .h3 {
-  opacity: 1;
-  transition: all 0.5s ease-in-out 0.3s;
-}
-
-.steps__slide.active .steps__image {
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-  transition: all 1s ease-in-out 0.3s;
-}
-
 .steps__text {
   font-family: Merriweather;
   font-style: normal;
@@ -1129,9 +1111,6 @@ p {
   background-color: white;
   width: 26vw;
   padding-top: 26vw;
-  transition: -webkit-transform 0.5s ease-in-out;
-  transition: transform 0.5s ease-in-out;
-  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
 }
 
 .halfimage__circle {
@@ -1143,9 +1122,6 @@ p {
   margin-top: 48px;
   overflow: hidden;
   z-index: -5;
-  transition: -webkit-transform 0.5s ease-in-out;
-  transition: transform 0.5s ease-in-out;
-  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
 }
 
 .halfimage__circle img {
@@ -1153,8 +1129,8 @@ p {
   width: 100%;
   -o-object-fit: cover;
   object-fit: cover;
-  -o-object-position: right;
-  object-position: right;
+  -o-object-position: center;
+  object-position: center;
   position: absolute;
   top: 0;
   left: 0;

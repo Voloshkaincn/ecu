@@ -176,11 +176,16 @@ $(document).ready(function () {
     console.log($(".halfimage .white-circle, .halfimage__circle"))
     function moving(object) {
         banner.on('mousemove', function (event) {
-            let screenWidth = $(document).width();
-            let screenHeight = $(document).height();
-            let Y = Math.floor((event.pageY - screenWidth * 0.08 + screenHeight / 6) / 3) + "px";
-            let X = Math.floor((event.pageX - 300) / 35) + "deg";
-            object.css({ 'top': Y, 'transform': 'rotate(' + X + ')' });
+            let screenWidth = $(window).width();
+            let screenHeight = $(window).height();
+            let Y = Math.floor((event.pageY + screenWidth * 0.24 - screenHeight / 2) / 2.5) + "px";
+            // let X = Math.floor((event.pageX - 300) / 35) + "deg";
+            let deg = Math.floor((event.pageY - screenHeight / 2) / screenHeight * -180) + "deg";
+            // let X = Math.abs(Math.floor((event.pageY - screenHeight / 2) / (screenHeight / screenWidth))) + "px";
+            console.log(event.pageY - screenHeight / 2, screenHeight / screenWidth, event.pageY - screenHeight / 2) / (screenHeight / screenWidth)
+            object.css({
+                'top': Y, 'transform': 'rotate(' + deg + ')'
+            });
         });
     }
     moving(imgs);
