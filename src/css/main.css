@@ -165,6 +165,15 @@ blockquote {
   margin: 0;
 }
 
+/*breakpoints*/
+@font-face {
+  font-family: "Merriweather";
+  src: url("../fonts/Merriweather/Merriweather-Black.woff2") format("woff2"), url("../fonts/Merriweather/Merriweather-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @-webkit-keyframes sliderContentHide {
   from {
     opacity: 1;
@@ -281,15 +290,6 @@ blockquote {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
-}
-
-/*breakpoints*/
-@font-face {
-  font-family: "Merriweather";
-  src: url("../fonts/Merriweather/Merriweather-Black.woff2") format("woff2"), url("../fonts/Merriweather/Merriweather-Black.woff") format("woff");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
 }
 
 html {
@@ -672,9 +672,13 @@ p {
     -webkit-transform: translateX(0px);
     transform: translateX(0px);
   }
-  to {
+  50% {
     -webkit-transform: translateX(-8px);
     transform: translateX(-8px);
+  }
+  to {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
   }
 }
 
@@ -683,9 +687,13 @@ p {
     -webkit-transform: translateX(0px);
     transform: translateX(0px);
   }
-  to {
+  50% {
     -webkit-transform: translateX(-8px);
     transform: translateX(-8px);
+  }
+  to {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
   }
 }
 
@@ -694,9 +702,13 @@ p {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-  to {
+  50% {
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 }
 
@@ -705,9 +717,13 @@ p {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-  to {
+  50% {
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 }
 
@@ -720,14 +736,20 @@ p {
   align-items: center;
 }
 
-.panel__btn:hover .iconMenu_circle {
-  -webkit-animation: menuAnim 0.9s ease-in-out infinite alternate;
-  animation: menuAnim 0.9s ease-in-out infinite alternate;
+.panel__btn .anim_elem {
+  transition: -webkit-transform 0.9s ease-in-out;
+  transition: transform 0.9s ease-in-out;
+  transition: transform 0.9s ease-in-out, -webkit-transform 0.9s ease-in-out;
 }
 
-.panel__btn_search:hover .panel__icon {
-  -webkit-animation: searchAnim 0.9s ease-in-out infinite alternate;
-  animation: searchAnim 0.9s ease-in-out infinite alternate;
+.panel__btn_menu .iconMenu_circle.anim_active {
+  -webkit-animation: menuAnim 1.8s ease-in-out infinite;
+  animation: menuAnim 1.8s ease-in-out infinite;
+}
+
+.panel__btn_search .panel__icon.anim_active {
+  -webkit-animation: searchAnim 1.8s ease-in-out infinite;
+  animation: searchAnim 1.8s ease-in-out infinite;
 }
 
 .panel__btn:focus {
@@ -1329,7 +1351,7 @@ p {
   transition: all 0.3s;
 }
 
-.menu__link:hover {
+.menu__link:hover, .menu__link_active {
   font-weight: bold;
 }
 
@@ -1353,7 +1375,6 @@ p {
   background: #6dcff6;
   color: #005da3;
   overflow: hidden;
-  min-height: calc(100vh - 250px);
 }
 
 .footer .container {
@@ -1363,7 +1384,6 @@ p {
 .footer__bottom {
   overflow: hidden;
   position: relative;
-  bottom: -50px;
 }
 
 .footer__menu {
@@ -1374,8 +1394,9 @@ p {
 .footer__panel {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   font-size: 16px;
+  padding-bottom: 25px;
 }
 
 @media (min-width: 1400px) {
@@ -1389,7 +1410,7 @@ p {
   height: 150px;
   background-color: #fff;
   border-radius: 50%;
-  margin-right: 40px;
+  margin: 0 40px -65px -30px;
   display: block;
   padding: 20px;
   flex-shrink: 0;
@@ -1397,8 +1418,8 @@ p {
 
 @media (min-width: 1400px) {
   .footer__logo {
-    width: 196px;
-    height: 196px;
+    width: 184px;
+    height: 184px;
     padding: 30px;
   }
 }

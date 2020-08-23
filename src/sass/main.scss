@@ -1,5 +1,4 @@
-@import "common-components/normalize";
-@import "common-components/animations";
+@import "normalize";
 @import "../libs/fullpage.css";
 $main-color: #00aeef;
 $main-light: #6dcff6;
@@ -20,6 +19,54 @@ $sm: 576px;
   font-weight: 900;
   font-style: normal;
   font-display: swap;
+}
+
+@keyframes sliderContentHide {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+@keyframes sliderContentShow {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes slide {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@keyframes hidden {
+  0% {
+    z-index: 2;
+  }
+  100% {
+    z-index: 2;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 html {
@@ -306,16 +353,22 @@ p {
   from {
     transform: translateX(0px);
   }
-  to {
+  50% {
     transform: translateX(-8px);
+  }
+  to {
+    transform: translateX(0px);
   }
 }
 @keyframes searchAnim {
   from {
     transform: rotate(0deg);
   }
-  to {
+  50% {
     transform: rotate(45deg);
+  }
+  to {
+    transform: rotate(0deg);
   }
 }
 .panel {
@@ -326,14 +379,20 @@ p {
     line-height: 22px;
     display: inline-flex;
     align-items: center;
-    &:hover {
-      .iconMenu_circle {
-        animation: menuAnim 0.9s ease-in-out infinite alternate;
+    .anim_elem {
+      transition: transform 0.9s ease-in-out;
+    }
+    &_menu {
+      .iconMenu_circle.anim_active {
+        animation: menuAnim 1.8s ease-in-out infinite;
       }
     }
-    &_search:hover .panel__icon {
-      animation: searchAnim 0.9s ease-in-out infinite alternate;
+    &_search {
+      .panel__icon.anim_active {
+        animation: searchAnim 1.8s ease-in-out infinite;
+      }
     }
+
     &:focus {
       outline: none;
       .panel__icon {
@@ -844,7 +903,8 @@ p {
   }
   &__link {
     transition: all 0.3s;
-    &:hover {
+    &:hover,
+    &_active {
       font-weight: bold;
     }
   }
@@ -871,7 +931,7 @@ p {
   background: $main-light;
   color: $text-color2;
   overflow: hidden;
-  min-height: calc(100vh - 250px);
+  // min-height: calc(100vh - 250px);
 
   .container {
     width: 100%;
@@ -880,7 +940,7 @@ p {
   &__bottom {
     overflow: hidden;
     position: relative;
-    bottom: -50px;
+    // bottom: -50px;
   }
   &__menu {
     width: 50%;
@@ -889,9 +949,9 @@ p {
   &__panel {
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     font-size: 16px;
-
+    padding-bottom: 25px;
     @media (min-width: $xxl) {
       font-size: 18px;
     }
@@ -901,13 +961,13 @@ p {
     height: 150px;
     background-color: #fff;
     border-radius: 50%;
-    margin-right: 40px;
+    margin: 0 40px -65px -30px;
     display: block;
     padding: 20px;
     flex-shrink: 0;
     @media (min-width: $xxl) {
-      width: 196px;
-      height: 196px;
+      width: 184px;
+      height: 184px;
       padding: 30px;
     }
   }
