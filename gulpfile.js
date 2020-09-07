@@ -18,7 +18,7 @@ gulp.task('compileSass', function () {
 		.pipe(autoprefixer({ cascade: false }))
 		.pipe(gulp.dest('src/css'))
 		.pipe(cleanCSS())
-		.pipe(cssnano())
+		.pipe(cssnano({ zindex: false }))
 		.pipe(rename({ suffix: '.min' }))
 		.on('error', function (err) {
 			console.error('Error!', err.message);

@@ -45,8 +45,8 @@ body {
     font-family: "Open Sans", sans-serif;
     line-height: 1.68;
     color: $text-color;
-    @media (min-width: $lg) and (min-height: 600px) {
-        font-size: calc(0.38vw + 7px);
+    @media (min-width: $md) {
+        font-size: calc(0.35vw + 5px);
     }
     @media (min-width: $xl) and (min-height: 768px) {
         font-size: calc(0.68vw + 3px);
@@ -143,6 +143,13 @@ p {
 }
 
 /*======= grid style =========*/
+/*breakpoints*/
+// $xxl: 1400px;
+// $xl: 1200px;
+// $lg: 992px;
+// $md: 768px;
+// $sm: 576px;
+
 .container {
     padding: 0 calc(50% - 15px);
     display: flex;
@@ -152,10 +159,7 @@ p {
         padding: 0 calc(50% - 250px);
     }
     @media (min-width: $md) {
-        padding: 0 calc(50% - 380px);
-    }
-    @media (min-width: $lg) {
-        padding: 0 calc(50% - 480px);
+        padding: 0 calc(2.3vw + 30px) 0 calc(3.4vw + 30px);
     }
     @media (min-width: $xl) {
         // padding: 0 calc(7.3vw + 30px);
@@ -191,6 +195,9 @@ p {
 }
 .col-3 {
     width: 25%;
+}
+.pb-0 {
+    padding-bottom: 0;
 }
 .pr-4 {
     padding-right: 2em;
@@ -245,11 +252,11 @@ p {
 
     &__container {
         justify-content: space-between;
-        align-items: end;
+        align-items: flex-start;
     }
     &__logo {
         width: 7.85%;
-        min-width: 70px;
+        min-width: 100px;
         svg {
             max-width: 100%;
             max-height: 100%;
@@ -317,7 +324,7 @@ p {
     }
     &__icon {
         margin-right: 15px;
-        fill: $main-color;
+        fill: #00aeef;
         transition: all 0.9s;
     }
 }
@@ -333,6 +340,15 @@ p {
 
 .message {
     overflow: hidden;
+    &__container {
+        height: 35vw;
+        max-height: calc(100vh - 300px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
     &_start {
         transform: none !important;
     }
@@ -396,6 +412,22 @@ p {
             margin-bottom: 0;
         }
     }
+    &__static {
+        .message__composition {
+            left: -30%;
+        }
+        .message__content {
+            opacity: 1;
+        }
+        .polyp {
+            font-size: 13vw;
+            transition: all 0s;
+            transform: scale(1);
+        }
+        .message__svg {
+            animation: rorete 9s 0s linear infinite; //after text animation - 0.2s
+        }
+    }
     &_start {
         .polyp {
             transform: scale(1);
@@ -405,31 +437,46 @@ p {
     &_end {
         .message__composition {
             z-index: 2;
+            // opacity: 0;
+            // transition: opacity 1.5s linear 8.5s;
         }
         .polyp {
             font-size: 25.5vw;
-            transition: font-size 4s ease-in-out;
+            transition: all 4s ease-in-out;
         }
         .polyp__timer svg {
             opacity: 1;
             stroke-dasharray: 0 160;
             transition: opacity 0.4s, stroke-dasharray 4s 0.1s linear;
         }
-        #polyp2 {
-            font-size: 300vw;
-            transform: scale(7.2);
-            transition: all 4s linear 5.5s;
+        #polyp1 svg {
+            opacity: 0;
+            transition: opacity 0s linear 4.3s;
         }
-        .message__finish p {
-            z-index: 3;
-            opacity: 1;
-            transition: opacity 2s 9.2s ease-in-out;
-            &:nth-child(2) {
-                transition-delay: 10.8s;
-            }
-            &:nth-child(3) {
-                transition-delay: 12.4s;
-            }
+        #polyp2 {
+            font-size: 525vw;
+            transform: scale(5);
+            transition: all 3s linear 6s;
+        }
+        #polyp2 svg {
+            width: 120%;
+            transition: width 1s linear;
+        }
+    }
+    &2 {
+        overflow: hidden;
+    }
+}
+.section.active {
+    .message__finish p {
+        z-index: 3;
+        opacity: 1;
+        transition: opacity 2.5s ease-in-out;
+        &:nth-child(2) {
+            transition-delay: 1s;
+        }
+        &:nth-child(3) {
+            transition-delay: 2s;
         }
     }
 }
@@ -437,10 +484,14 @@ p {
     font-size: 25.5vw;
     animation: none;
     z-index: 5;
-    transform-origin: 48.4% 72%;
+    transform-origin: 48% 74%;
+    transition: all 0s;
+    svg {
+        width: 100%;
+    }
 }
 .polyp {
-    font-size: 9vw;
+    font-size: 13vw;
     line-height: 1;
     width: 0.9em;
     height: 0.9em;
@@ -453,12 +504,11 @@ p {
     transform-origin: center;
     transition: all 0s 0s;
     &__timer {
-        width: 28%;
-        height: 74%;
-        margin: -14%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         svg {
             stroke: #007de0;
             fill: transparent;
@@ -466,6 +516,9 @@ p {
             stroke-dasharray: 160 160;
             animation: none;
             opacity: 0;
+            width: 27%;
+            max-height: 71%;
+            transform: rotate(90deg) scaleX(-1);
         }
     }
 }
@@ -481,7 +534,7 @@ p {
         flex-direction: column;
         justify-content: space-between;
         .text_md {
-            line-height: 2.24;
+            line-height: 2.244;
             margin-top: 1.45em;
         }
     }
@@ -489,13 +542,17 @@ p {
         position: absolute;
         top: -7.5vw;
         left: 5%;
-        width: 38vw;
-        height: 38vw;
+        width: 38em;
+        height: 38em;
     }
     &_color_md {
         color: #00aeef;
         font-family: "Merriweather", serif;
         font-weight: 900;
+        transition: all 0.3s;
+        &:hover {
+            color: #6dcff6;
+        }
     }
 }
 .list {
@@ -661,6 +718,7 @@ p {
 
 .social {
     display: flex;
+    line-height: 2.2em;
     &__link {
         margin-right: 20px;
         display: block;
@@ -677,7 +735,10 @@ p {
     margin-left: auto;
     display: flex;
     align-items: center;
+    align-self: flex-end;
     flex-shrink: 0;
+    line-height: 1;
+    margin-bottom: -4px;
     @media (min-width: $xxl) {
         font-size: 14px;
     }
@@ -699,6 +760,9 @@ p {
     position: absolute;
     top: 0;
     left: 0;
+    &__container {
+        z-index: 3;
+    }
     &__wrap {
         width: 100%;
         padding-top: 62%;
@@ -706,6 +770,7 @@ p {
         &_last {
             left: -10%;
             width: 110%;
+            margin-top: 0.9em;
             &:last-child {
                 margin-bottom: -47%;
             }
@@ -715,9 +780,16 @@ p {
 .scrollDown {
     position: fixed;
     bottom: 8%;
-    left: calc(7.3vw + 60px);
+    left: calc(50% - 250px);
     z-index: 999999;
-    width: 57px;
+    width: 6.6%;
+    min-width: 100px;
     height: 57px;
     padding: 0;
+    @media (min-width: $md) {
+        left: calc(3.4vw + 30px);
+    }
+    @media (min-width: $xl) {
+        left: calc(6.4vw + 30px);
+    }
 }

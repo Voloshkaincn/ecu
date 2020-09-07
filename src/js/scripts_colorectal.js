@@ -2,20 +2,25 @@ $(document).ready(function () {
 
 
     $('#pagepiling').pagepiling({
+        navigation: false,
+        afterRender: function () {
+            console.log('pagepilingis ready')
+            $.fn.pagepiling.setAllowScrolling(false);
+        },
         onLeave: function (index, nextIndex, direction) {
             let activeScreen = $('#message');
             let hasClassStart = activeScreen.hasClass('message_start')
             let hasClassEnd = activeScreen.hasClass('message_end')
 
             if (index == 1 && direction == 'down' && !hasClassStart && !hasClassEnd) {
-
+                //прокрутка с 1го к 2му слайду
                 $.fn.pagepiling.setAllowScrolling(false);
                 document.getElementById('scrollDown').style.visibility = 'hidden';
 
                 document.querySelector('.message__composition').style.visibility = 'visible';
-                activeScreen.addClass('message_start')
-                $('.message__anim')[0].beginElement();
 
+                $('.message__anim')[0].beginElement();
+                activeScreen.addClass('message_start')
                 setTimeout(() => {
                     bodymovin.loadAnimation({
                         container: document.getElementById('polyp1'),
@@ -23,6 +28,7 @@ $(document).ready(function () {
                         loop: true,
                         autoplay: true,
                         path: '../json/polyp.json'
+                        // path: 'http://1047754.ufexpo.web.hosting-test.net/EuropaColan/json/polyp.json'
                     })
                 }, 1000)
 
@@ -32,6 +38,7 @@ $(document).ready(function () {
                 }, 10000)
             } else if (index == 2 && direction == 'down' && hasClassStart) {
                 if (!hasClassEnd) {
+                    //прокрутка со 2го на 3й слайд
                     $.fn.pagepiling.moveTo(2);
                     $.fn.pagepiling.setAllowScrolling(false);
                     document.getElementById('scrollDown').style.visibility = 'hidden'
@@ -45,49 +52,52 @@ $(document).ready(function () {
                             loop: false,
                             autoplay: true,
                             path: '../json/polyp_mutation.json'
+                            // path: 'http://1047754.ufexpo.web.hosting-test.net/EuropaColan/json/polyp_mutation.json'
                         });
                         document.getElementById('polyp1').style.dispaly = 'none'
                     }, 4200)
 
                     //6s to text translate animation + 1.5s to polyp + 1.5s to composition translate left + 1.5s to fade in text
-                    console.log('end')
                     setTimeout(() => {
-                        // polyp2.destroy();
-                        $('.message__content').hide()
-                        $('.message__composition').hide()
+                        $.fn.pagepiling.moveTo(3);
+                    }, 8800);
+                    setTimeout(() => {
+                        $('#message').addClass('message__static')
                         $.fn.pagepiling.setAllowScrolling(true);
                         document.getElementById('scrollDown').style.visibility = 'visible'
-                    }, 13000);
+                    }, 12000);
                 } else {
+                    //прокрутка с 3-го на 4й слайд
                     activeScreen.removeClass('message_start')
-                    $('.header').hide()
-                    document.getElementById('scrollDown').style.visibility = 'hidden'
                 }
-            } else if (index == 2 && direction == 'down' && !hasClassStart) {
+            } else if (index == 3 && direction == 'up') {
+                activeScreen.removeClass('message_end');
+                activeScreen.addClass('message_start')
+                if ($('#polyp2 svg').length == 1) {
+                    $('#polyp2 svg').remove()
+                }
+
+            } else if (index == 3 && direction == 'down') {
                 $('.header').hide()
                 document.getElementById('scrollDown').style.visibility = 'hidden'
 
-            } else if (index == 3 && direction == 'up') {
+            } else if (index == 4 && direction == 'up') {
                 document.getElementById('scrollDown').style.visibility = 'visible'
             }
         },
         afterLoad: function (anchorLink, index) {
             let active2 = $('#message').hasClass('active')
-
             if (index == 1) {
-                document.getElementById('scrollDown').style.visibility = 'visible'
+                setTimeout(() => {
+                    $.fn.pagepiling.setAllowScrolling(true);
+                    document.getElementById('scrollDown').style.visibility = 'visible'
+                }, 3000)
+
             }
-            if (index == 3 && !active2) {
-                if ($('#polyp1 svg').length == 1) {
-                    console.log($('#polyp1 svg'))
-                    $('#polyp1 svg').remove()
-                }
+            if (index == 4 && !active2) {
                 if ($('#polyp2 svg').length == 1) {
-                    console.log($('#polyp1 svg'))
                     $('#polyp2 svg').remove()
                 }
-                // $('.header').hide()
-                // document.getElementById('scrollDown').style.visibility = 'hidden'
 
                 $('.last').on("scroll", () => {
                     circleAnimate()
@@ -118,6 +128,7 @@ $(document).ready(function () {
             loop: true,
             autoplay: true,
             path: '../json/scroll_icon_onblue.json'
+            // path: 'http://1047754.ufexpo.web.hosting-test.net/EuropaColan/json/scroll_icon_onblue.json'
         }).setSpeed(2);
 
     }, 2000)
