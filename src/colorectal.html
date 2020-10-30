@@ -23,27 +23,41 @@
 			</a>
 			<div class="header__panel">
 				<button class="panel__btn  panel__btn_menu">
-					<svg class="panel__icon" width="29" height="18" viewBox="0 0 29 18" fill="none">
-						<path class="iconMenu_circle anim_elem"
-							d="M18.4999 18C20.9852 18 23 16.2091 23 14C23 11.7909 20.9852 10 18.4999 10C16.0147 10 14 11.7909 14 14C14 16.2091 16.0147 18 18.4999 18Z" />
-						<path
-							d="M4.83102 14C5.07164 11.6127 6.19416 9.39962 7.9808 7.79004C9.76744 6.18046 12.0908 5.2892 14.5 5.2892C16.9092 5.2892 19.2326 6.18046 21.0192 7.79004C22.8058 9.39962 23.9284 11.6127 24.169 14H29C28.8834 10.2476 27.3046 6.68782 24.5981 4.0746C21.8915 1.46138 18.2698 0 14.5 0C10.7302 0 7.1085 1.46138 4.40194 4.0746C1.69538 6.68782 0.116603 10.2476 0 14H4.83102Z" />
+					<svg class="panel__icon" width="29" height="20" viewBox="0 0 23.51 15.24" fill="none">
+						<circle class="iconMenu_circle anim_elem" cx="15.24" cy="11.76" r="3.48" />
+						<path class="cls-1" d="M3.92,11.76a7.84,7.84,0,1,1,15.67,0h3.92A11.76,11.76,0,1,0,0,11.76Z" />
 					</svg>Меню
 				</button>
-				<button class="panel__btn panel__btn_search">
+				<!-- <button class="panel__btn panel__btn_search">
 					<svg class="panel__icon anim_elem" width="32" height="33">
 						<use xlink:href='#iconSearch'>
 					</svg>Пошук
-				</button>
+				</button> -->
 			</div>
 		</div>
+
+		<div id="navOverlay" class="nav__overlay"></div>
+
+		<nav id="headerNav" class="nav">
+			<ul class="menu header__menu">
+				<li class="menu__item"><a href="/" class="menu__link ">Головна</a></li>
+				<li class="menu__item"><a href="/colorectal.html" class="menu__link menu__link_active">Колоректальний
+						рак</a>
+				</li>
+				<li class="menu__item"><a href="/prevention.html" class="menu__link">Як попередити КРР?</a></li>
+				<li class="menu__item"><a href="/screening.html" class="menu__link">Скринінг</a></li>
+				<li class="menu__item"><a href="/news.html" class="menu__link">Новини</a></li>
+				<li class="menu__item"><a href="/info.html" class="menu__link">Корисна інформація</a></li>
+			</ul>
+			<button class="nav__close"><img src="img/icon-close.svg" alt="close"></button>
+		</nav>
 	</header>
 
 	<div id="pagepiling">
 		<section id="main" class="section section_center  main bg-dark">
 			<div class="container">
 
-				<h1 class="h1">Колоректальний рак (КРР) —<br>
+				<h1 class="h1">Колоректальний&nbsp;рак&nbsp;(КРР)&nbsp;—<br>
 					це&nbsp;рак товстої або прямої кишки</h1>
 				<p class="text_xl color pr-4">КРР є найбільш поширеним видом раку шлунково-кишкового тракту у Європі.
 					Його
@@ -55,7 +69,7 @@
 			</div>
 		</section>
 		<section id="message" class="section section_center  message bg-dark">
-			<div class="container message__container">
+			<div class="container message__container text_xxl">
 				<div class="message__composition">
 					<div class="message__text">
 						<svg class="message__svg" viewBox="0 0 1920 760" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -85,10 +99,10 @@
 					<div id="polyp2" class="polyp"></div>
 				</div>
 				<div class="message__content">
-					<p class="text_xxl color">
+					<div class="color">
 						Поліп є <span class="light">майстром з&nbsp;маскування</span>, і ви не&nbsp;відчуваєте жодних
-						симптомів його розвитку, аж поки він&nbsp;не&nbsp;<span class="light">перетвориться
-							на&nbsp;рак</span>.</p>
+						симптомів його розвитку, аж&nbsp;поки він&nbsp;не&nbsp;<span class="light">перетвориться
+							на&nbsp;рак</span>.</div>
 				</div>
 			</div>
 		</section>
@@ -116,13 +130,12 @@
 					<p class="text_md col-11">Колоректальний рак вражає чоловіків і жінок усіх расових та етнічних груп,
 						і
 						найчастіше зустрічається у&nbsp;людей <strong>старше 50 років</strong>. Однак з кожним роком
-						захворюваність вражає
-						і значно молодше населення.</p>
+						захворюваність вражає і значно молодше населення.</p>
 					<a href="/" class="last_color_md text_lg strong col-11"> Як попередити колоректальний рак?</a>
 				</div>
 			</div>
 			<div class=" container last__container bg-main last__container_jsWatch">
-				<div class=" col-6">
+				<div class=" col-6 mb-5">
 					<div class="text_xxl col-9">Фактори ризику захворіти на колоректальний рак:</div>
 				</div>
 				<div class="col-6  text_md strong">
@@ -149,7 +162,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-6">
+				<div class="last__circletitle">
 					<p class="text_xxl mt-0">Плановий скринінг безсимптомних пацієнтів є&nbsp;найбільш ефективним
 						способом зменшення ризику захворіти на&nbsp;КРР.</p>
 				</div>
@@ -158,7 +171,7 @@
 				<div class="col-12">
 					<p class="list__title strong  col-4 mt-0">Часті симптоми колоректального раку:</p>
 				</div>
-				<div class="col-6">
+				<div class="col-6 mb-mob-5">
 					<ul class="list text_md">
 						<li class="list__item colorline">зміна стільця</li>
 						<li class="list__item colorline">постійний дискомфорт у животі</li>
@@ -177,9 +190,9 @@
 				</div>
 			</div>
 			<div class=" container  bg-main video__container">
-				<h2 class="text_xxl col-10 mt-4 mb-4">Коли і кому необхідно пройти
+				<h2 class="text_xxl video__title">Коли і кому необхідно пройти
 					обстеження на колоректальний рак?</h2>
-				<div class="col-5">
+				<div class="video__col">
 					<div class="video__wrap video__wrap_last mb-5">
 						<iframe class="video" src="https://www.youtube.com/embed/QRQwZDWz1Pw" frameborder="0"
 							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -192,7 +205,7 @@
 					</div>
 
 				</div>
-				<div class="col-6  ml-auto">
+				<div class="video__text">
 					<p class="text_lg strong  mt-0">Всім чоловікам та&nbsp;жінкам у&nbsp;віці старше 50&nbsp;років. Але
 						якщо у&nbsp;Вас є&nbsp;вищезазначені симптоми або один з&nbsp;факторів ризику, необхідно
 						починати скринінг з&nbsp;40&nbsp;років, або на&nbsp;10&nbsp;років раніше ніж вік, у&nbsp;якому
@@ -203,24 +216,26 @@
 			<footer class="footer">
 				<div class="container">
 					<ul class="menu footer__menu ">
-						<li class="menu__item"><a href="#" class="menu__link">Головна</a></li>
-						<li class="menu__item"><a href="#" class="menu__link menu__link_active">Колоректальний рак</a>
+						<li class="menu__item"><a href="/" class="menu__link ">Головна</a></li>
+						<li class="menu__item"><a href="/colorectal.html"
+								class="menu__link menu__link_active">Колоректальний рак</a>
 						</li>
-						<li class="menu__item"><a href="#" class="menu__link">Як попередити КРР?</a></li>
-						<li class="menu__item"><a href="#" class="menu__link">Скринінг</a></li>
-						<li class="menu__item"><a href="#" class="menu__link">Новини</a></li>
-						<li class="menu__item"><a href="#" class="menu__link">Корисна інформація</a></li>
+						<li class="menu__item"><a href="/prevention.html" class="menu__link">Як попередити КРР?</a></li>
+						<li class="menu__item"><a href="/screening.html" class="menu__link">Скринінг</a></li>
+						<li class="menu__item"><a href="/news.html" class="menu__link">Новини</a></li>
+						<li class="menu__item"><a href="/info.html" class="menu__link">Корисна інформація</a></li>
 					</ul>
 				</div>
 				<div class="container footer__bottom">
 					<div class="footer__panel">
-						<a href="#" class="footer__logo">
+						<a href="/" class="footer__logo">
 							<svg viewBox="0 0 172 118">
-								<use xlink:href='#iconLogo'>
+								<use xlink:href='#iconLogo'></use>
+
 							</svg>
 						</a>
 						<div class="social">
-							<a href="#" class="social__link">
+							<a href="https://www.facebook.com/EuropaColonUkraine/" target="_blank" class="social__link">
 								<svg width="33" height="33" viewBox="0 0 33 33" fill="none">
 									<!-- <use xlink:href='#iconFb'> -->
 									<path class="social__path"
@@ -228,7 +243,18 @@
 										fill="#007DE0" />
 								</svg>
 							</a>
-							<a href="#" class="social__link">
+							<a href="https://www.instagram.com/EuropaColonUkraine/" target="_blank"
+								class="social__link">
+								<svg width="33" height="33" viewBox="0 0 551.034 551.034">
+									<path class="social__path"
+										d="M386.878,0H164.156C73.64,0,0,73.64,0,164.156v222.722   c0,90.516,73.64,164.156,164.156,164.156h222.722c90.516,0,164.156-73.64,164.156-164.156V164.156   C551.033,73.64,477.393,0,386.878,0z M495.6,386.878c0,60.045-48.677,108.722-108.722,108.722H164.156   c-60.045,0-108.722-48.677-108.722-108.722V164.156c0-60.046,48.677-108.722,108.722-108.722h222.722   c60.045,0,108.722,48.676,108.722,108.722L495.6,386.878L495.6,386.878z" />
+									<path class="social__path"
+										d="M275.517,133C196.933,133,133,196.933,133,275.516s63.933,142.517,142.517,142.517   S418.034,354.1,418.034,275.516S354.101,133,275.517,133z M275.517,362.6c-48.095,0-87.083-38.988-87.083-87.083   s38.989-87.083,87.083-87.083c48.095,0,87.083,38.988,87.083,87.083C362.6,323.611,323.611,362.6,275.517,362.6z" />
+									<circle class="social__path" cx="418.31" cy="134.07" r="34.15" />
+								</svg>
+							</a>
+							<a href="https://www.youtube.com/channel/UCvlCyTGpxlLsEFE20I54FGg" target="_blank"
+								class="social__link">
 								<svg width="47" height="33" viewBox="0 0 47 33" fill="none">
 									<!-- <use xlink:href='#iconYoutube'> -->
 									<path class="social__path"
@@ -237,7 +263,7 @@
 								</svg>
 							</a>
 						</div>
-						<div>
+						<div class="footer__contact">
 							<a class="strong" href="mailto:info@europacolon.com.ua ">
 								info@europacolon.com.ua
 							</a>
@@ -338,6 +364,7 @@
 					d="M117.22 114.212L118.319 114.795C118.007 115.433 117.583 116.011 117.067 116.501C116.602 116.928 116.059 117.262 115.468 117.486C114.826 117.718 114.147 117.831 113.464 117.819C112.737 117.857 112.01 117.731 111.338 117.45C110.666 117.169 110.066 116.74 109.583 116.196C108.688 115.184 108.194 113.882 108.192 112.534C108.179 111.29 108.597 110.08 109.374 109.108C109.842 108.491 110.451 107.995 111.151 107.662C111.85 107.329 112.62 107.168 113.395 107.194C114.197 107.162 114.994 107.324 115.721 107.664C116.447 108.004 117.081 108.514 117.568 109.149C118.317 110.144 118.709 111.36 118.681 112.603H109.555C109.545 113.674 109.948 114.707 110.682 115.488C111.028 115.853 111.447 116.142 111.912 116.335C112.377 116.529 112.877 116.623 113.381 116.612C113.893 116.613 114.402 116.524 114.883 116.348C115.34 116.191 115.765 115.951 116.135 115.641C116.566 115.221 116.931 114.739 117.22 114.212ZM117.22 111.438C117.087 110.835 116.826 110.268 116.455 109.773C116.099 109.343 115.646 109.001 115.134 108.775C114.593 108.525 114.004 108.397 113.409 108.4C112.46 108.38 111.539 108.722 110.835 109.357C110.25 109.93 109.841 110.656 109.653 111.452L117.22 111.438Z"
 					fill="#005DA3" />
 			</symbol>
+
 			<symbol id="iconLogoLight" width="172" height="118" viewBox="0 0 1240 860" fill="none">
 				<style type="text/css">
 					.st0 {

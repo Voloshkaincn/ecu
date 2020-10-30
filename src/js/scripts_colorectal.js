@@ -28,7 +28,7 @@ $(document).ready(function () {
                         loop: true,
                         autoplay: true,
                         path: '../json/polyp.json'
-                        // path: 'http://1047754.ufexpo.web.hosting-test.net/EuropaColan/json/polyp.json'
+                        // path: 'http://1047754.ufexpo.web.hosting-test.net/EuropaColon/json/polyp.json'
                     })
                 }, 1000)
 
@@ -52,7 +52,7 @@ $(document).ready(function () {
                             loop: false,
                             autoplay: true,
                             path: '../json/polyp_mutation.json'
-                            // path: 'http://1047754.ufexpo.web.hosting-test.net/EuropaColan/json/polyp_mutation.json'
+                            // path: 'http://1047754.ufexpo.web.hosting-test.net/EuropaColon/json/polyp_mutation.json'
                         });
                         document.getElementById('polyp1').style.dispaly = 'none'
                     }, 4200)
@@ -128,7 +128,7 @@ $(document).ready(function () {
             loop: true,
             autoplay: true,
             path: '../json/scroll_icon_onblue.json'
-            // path: 'http://1047754.ufexpo.web.hosting-test.net/EuropaColan/json/scroll_icon_onblue.json'
+            // path: 'http://1047754.ufexpo.web.hosting-test.net/EuropaColon/json/scroll_icon_onblue.json'
         }).setSpeed(2);
 
     }, 2000)
@@ -174,3 +174,31 @@ $(document).ready(function () {
 
 });
 
+$('.panel__btn_menu').on('click', function () {
+    $('#headerNav').addClass('nav_open')
+    $('.nav__overlay').addClass('nav__overlay_active')
+    $('.nav__close').on('click', function () {
+        $('#headerNav').removeClass('nav_open')
+        $('.nav__overlay').removeClass('nav__overlay_active')
+    })
+})
+$('.nav__overlay').on('click', function () {
+    $('#headerNav').removeClass('nav_open')
+    $('.nav__overlay').removeClass('nav__overlay_active')
+})
+
+$("#scrollDown").on('click', () => {
+    $.fn.pagepiling.moveSectionDown();
+
+})
+
+let overlay = document.getElementById('navOverlay')
+overlay.addEventListener('wheel', function (event) {
+    event.stopPropagation();
+    return false
+})
+let nav = document.getElementById('headerNav')
+nav.addEventListener('wheel', function (event) {
+    event.stopPropagation();
+    return false
+})
